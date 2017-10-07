@@ -1,0 +1,26 @@
+.content, .start-btn{
+  background:#000;
+  color:#fff;
+}
+.start-btn{
+  border-radius: inherit;
+}
+.content p{
+  font-size:12px;
+}
+.topbar {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    opacity: 0.9;
+}
+.topbar h1 { 
+background: url("../../assets/img/ge_logo.png");
+background-size: 6%;
+background-repeat: no-repeat;
+font-size: 25px;
+padding: 10px 50px;
+margin: 10px 15px 5px;
+}
