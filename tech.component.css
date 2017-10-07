@@ -21,18 +21,18 @@ html {
   background: url("../../assets/img/ge_logo.png");
     background-size: 6%;
     background-repeat: no-repeat;
-    font-size: 20px;
-    padding: 6px 50px;
+    font-size: 18px;
+    padding: 3px 50px;
     margin: 10px 15px 5px;
     height: 44px;
     position: relative;
 }
 .topbar h1 span{
-    position: absolute;
+    /*position: absolute;*/
     display: block;
-    font-size: 12px;
+    font-size: 18px;
     left: 304px;
-    color: #79B9D2;
+    color: #fff;
     top: 27px;
 }
   
