@@ -1,0 +1,70 @@
+<div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+           <h1 routerLink="/">GE TRANSPORT INTELLIGENCE<span>Tech Blog</span></h1>
+        </div>
+        <div class="offset-sm-4 col-sm-4">
+          <nav role='navigation' class="pull-right">
+            <ul>
+              <li><a class="active">See All Posts</a></li> 
+              <li><a routerLink="/add">Add New Post</a></li> 
+            </ul>
+          </nav> 
+        </div>
+      </div>
+    </div>
+</div>
+ <div class="content_tech">
+    <div class="container">
+        <div class="row">
+	        <div *ngIf="!selectPost">
+		        <ul class="post-grid">
+		          <li *ngFor="let post of posts" class="col-sm-3" 
+		          (click) = "setSelectPost(post)">
+		            <h3>{{post.title}}</h3>
+	                <p>{{post.body | limitTo:70}}...</p>
+	                <p class="fa fa-comment pull-left"> {{post.comments.length}}</p>
+	                <p class="fa fa-heart pull-right"> {{post.likes}}</p>
+		          </li>
+		        </ul>
+		    </div>
+	        <div  *ngIf="selectPost">
+	            <div  class="post">
+			        <h2>{{selectPost.title}}</h2>
+			        <img src="{{selectPost.image}}">
+			        <cite> {{selectPost.author}}  {{selectPost.createdOn | date}}</cite>
+			        <div class="post-body">
+		             <p>
+		              {{selectPost.body}}
+		             </p> 
+		            </div>
+		            <div class="comments">
+		            	<button class="fa fa-heart" (click) = "selectPost.likes = selectPost.likes+1"> {{selectPost.likes}}</button>
+		            	
+		            	<h3>Comment</h3>
+		            	<div *ngFor="let blog of blogs">
+		            		<q>{{blog.para}}</q> - 
+		            		<span><b>{{blog.name}}</b></span>
+		            	</div>
+		            	<ul>
+			               <li *ngFor = "let comment of selectPost.comments">
+			                 "{{comment.body}}"
+			                 <cite>- <b>{{comment.author}}</b></cite>
+			               </li>
+			            </ul>
+			            <form name="commentForm" novalidate>
+				            <h4>Add Comment</h4>
+	                        <textarea [(ngModel)] = "blogComment.para" cols="30" rows="10" name="para" required></textarea>
+	                        <label for="">by:</label>
+	                        <input type="text" [(ngModel)] = "blogComment.name"  placeholder="Name" name="name" required/><br>
+	                        <button class="pull-left" (click) = "setSubmit()">Submit</button>
+	                        <button class="btn btn-default pull-right" (click)="setCancel()">Cancel</button>
+                        </form>
+		            </div>
+	            </div>
+			</div>
+        </div>
+    </div>
+</div>
+
