@@ -1,0 +1,38 @@
+<div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+           <h1 routerLink="/">GE TRANSPORT INTELLIGENCE</h1>
+        </div>
+        <div class="offset-sm-4 col-sm-4">
+          <nav role='navigation' class="pull-right">
+            <ul>
+              <li><a routerLink="/blog">See All Posts</a></li>
+              <li><a class="active" >Add New Post</a></li> 
+            </ul>
+          </nav> 
+        </div>
+      </div>
+    </div>
+</div>
+<div class="container">
+	<div class="post" style = "padding-top: 20px">
+	  <h2>Add New Post</h2>
+	  
+	    <form>
+	          <h4>Title</h4>
+	          <input type="text" [(ngModel)]="curBlog.title" name="name" />
+	          <h4>Body</h4>
+	          <textarea [(ngModel)]="curBlog.body" ng-list="/\n/" rows="10" name="text"></textarea>
+	          <label for="">Featured Image URL</label>
+	          <input type="text" [(ngModel)] = "curBlog.image" placeholder="http://placekitten.com/g/2000/600" 
+	          name="image" />
+	          <label for="">by:</label>
+	          <input type="text" [(ngModel)] = "curBlog.author" placeholder="Author Name" name="writer" required/>
+	          <br>
+	          
+	          <button class="btn btn-default" (click) = "addBlog()">Submit</button>
+	    </form>
+	  
+	</div>
+</div>

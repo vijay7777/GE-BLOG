@@ -1,0 +1,38 @@
+* {
+  box-sizing:border-box;
+}
+
+html {
+  font-size:18px;
+}
+
+.topbar {
+  background:#fff;
+  color:black;
+  width:100%;
+  z-index:9999;
+  padding:5px 20px;
+}
+  
+.topbar h1 {
+  cursor:pointer;
+}
+  
+.topbar nav {
+  margin-top:25px;
+}
+    
+.topbar nav ul {
+  padding:0;
+  margin:0;
+}
+      
+.topbar nav ul li {
+  display:inline-block;
+  padding:10px;
+}
+        
+.topbar nav ul li a{
+  color:white;
+  text-decoration:none;
+}

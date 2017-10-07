@@ -1,0 +1,125 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-tech',
+  templateUrl: './tech.component.html',
+  styleUrls: ['./tech.component.css']
+})
+export class TechComponent implements OnInit {
+  posts: any[]=[];
+  blogs: any[]=[];
+  likes:number;
+  comments:number;
+  selBlogs:any[]=[];
+  selectPost: object;
+  title:string;
+  comment:string;
+  curBlog:object;
+  blogComment:object;
+
+  constructor() { }
+
+  ngOnInit() {
+      this.title = "Angular js Blog App"
+      this.comment = "Comments"
+      this.blogComment = {
+        para: '',
+        name: ''
+   };
+      this.posts = [
+        {
+              "title": "Blog Post One",
+              "body": `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
+                "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
+                "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
+                "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius.`
+            ,
+              "author": "Nick Moreton",
+              "comments": [
+                {
+                  "body":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos possimus porro earum dolor sint fuga laborum velit laudantium distinctio quos sunt veritatis unde inventore, autem ad tenetur voluptatibus mollitia vel!",
+                  "author": "trollguy87"
+                }
+              ],
+              "likes":0,
+              "image":"http://placekitten.com/g/2000/600",
+              "createdOn":1408547127216
+        },
+        {
+              "title": "Blog Post Two",
+              "body": `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
+                "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
+                "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
+                "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius.`
+              ,
+              "author": "Nick Moreton",
+              "comments": [
+                {
+                  "body":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos possimus porro earum dolor sint fuga laborum velit laudantium distinctio quos sunt veritatis unde inventore, autem ad tenetur voluptatibus mollitia vel!",
+                  "author": "trollguy87"
+                }
+              ],
+              "likes":0,
+              "image":"http://placekitten.com/g/2000/600",
+              "createdOn":1408547127216
+        },
+
+        {
+              "title": "Blog Post Three",
+              "body": `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
+                "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
+                "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
+                "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius.`
+              ,
+              "author": "Nick Moreton",
+              "comments": [
+                {
+                  "body":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos possimus porro earum dolor sint fuga laborum velit laudantium distinctio quos sunt veritatis unde inventore, autem ad tenetur voluptatibus mollitia vel!",
+                  "author": "trollguy87"
+                }
+              ],
+              "likes":0,
+              "image":"http://placekitten.com/g/2000/600",
+              "createdOn":1408547127216
+        },
+
+        {
+              "title": "Blog Post Four",
+              "body": `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
+                "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
+                "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
+                "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius.`
+              ,
+              "author": "Nick Moreton",
+              "comments": [
+                {
+                  "body":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos possimus porro earum dolor sint fuga laborum velit laudantium distinctio quos sunt veritatis unde inventore, autem ad tenetur voluptatibus mollitia vel!",
+                  "author": "trollguy87"
+                }
+              ],
+              "likes":0,
+              "image":"http://placekitten.com/g/2000/600",
+              "createdOn":1408547127216
+        }
+      ]
+
+    let curBlog = JSON.parse(localStorage.getItem('curBlog'));
+    if(curBlog){
+      this.posts.push(curBlog);
+      localStorage.removeItem('curBlog');
+    }
+  }
+
+
+  setSelectPost(post) {
+    this.selectPost = post;
+  }
+  setCancel(){
+    this.selectPost = undefined;
+  }
+
+  setSubmit(){
+    this.blogs.push(this.blogComment);
+    this.blogComment = {};
+  }
+}
